@@ -1,29 +1,30 @@
 ﻿using System.Diagnostics;
+
 Stopwatch stopwatch = new Stopwatch();
 Random rand = new Random();
-int[] arr = new int[100];
+int[] arr = new int[2000];
 for (int i = 0; i < arr.Length; i++)
 {
-    arr[i] = rand.Next(1, 3);
+    arr[i] = rand.Next(1, 100);
 }
-
-while (arr.Length != 0)
+File.WriteAllText("results.txt", string.Empty);
+for (int i = 5; i >= 1; i--)
 {
-    for (int k = 0; k < 5; k++)
+    double averageTime = 0;
+    for (int k = 1; k <= 5; k++)
     {
         ulong sum = 1;
         stopwatch.Restart();
-        for (int j = 0; j < arr.Length; j++)
+        foreach (var t in arr)
         {
-            sum *= (ulong)arr[j];
+            sum *= (ulong)t;
         }
         
         stopwatch.Stop();
-        Console.WriteLine(stopwatch.Elapsed.TotalMilliseconds);
-        Console.WriteLine(sum);
-
+        File.AppendAllText("results.txt", stopwatch.Elapsed.TotalMilliseconds + "\n");
+        averageTime += stopwatch.Elapsed.TotalMilliseconds;
     }
-    Array.Resize(ref arr, arr.Length - 20);
-    Console.WriteLine("~~~~~~~~~~~~~~");
-
+    averageTime /= 5;
+    File.AppendAllText("results.txt",  $"\n{i} попытка, массив длинной {arr.Length}, среднее время {Math.Round(averageTime, 4)}\n" + "~~~~~~~~~~~~~~\n");
+    Array.Resize(ref arr, arr.Length - 400);
 }
