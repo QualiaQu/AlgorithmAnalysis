@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{E2E3895D-2B1F-4358-932E-719015217F2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumOfElements", "SumOfElements\SumOfElements.csproj", "{E2E3895D-2B1F-4358-932E-719015217F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstantFunction", "ConstantFunction\ConstantFunction.csproj", "{667B2159-E50E-4A2B-A2AD-310D8DA8B334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{8775474A-494F-4C7E-B3D4-F1E965EA43E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{E2E3895D-2B1F-4358-932E-719015217F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2E3895D-2B1F-4358-932E-719015217F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2E3895D-2B1F-4358-932E-719015217F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667B2159-E50E-4A2B-A2AD-310D8DA8B334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667B2159-E50E-4A2B-A2AD-310D8DA8B334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667B2159-E50E-4A2B-A2AD-310D8DA8B334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667B2159-E50E-4A2B-A2AD-310D8DA8B334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8775474A-494F-4C7E-B3D4-F1E965EA43E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8775474A-494F-4C7E-B3D4-F1E965EA43E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8775474A-494F-4C7E-B3D4-F1E965EA43E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8775474A-494F-4C7E-B3D4-F1E965EA43E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
