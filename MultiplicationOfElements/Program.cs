@@ -3,7 +3,7 @@ using HelperLibrary;
 
 Stopwatch stopwatch = new Stopwatch();
 Random rand = new Random();
-int[] arr = new int[50000];
+int[] arr = new int[10000];
 for (int i = 0; i < arr.Length; i++)
 {
     arr[i] = rand.Next(1, 100);
@@ -14,7 +14,7 @@ while (arr.Length != 0)
     List<double> timeList = new List<double>();
     for (int k = 1; k <= 10; k++)
     {
-        double mul = 0;
+        double mul = 1;
         stopwatch.Restart();
         foreach (var t in arr)
         {
@@ -43,7 +43,7 @@ while (arr.Length != 0)
     var averageTime = timeList.ToArray().Sum();
     averageTime /= count;
     results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
-    Array.Resize(ref arr, arr.Length - 500);
+    Array.Resize(ref arr, arr.Length - 100);
     timeList.Clear();
     Console.WriteLine("------------------------------------------\n");
     Console.WriteLine($"объём данных{arr.Length}");
