@@ -25,4 +25,4 @@ while (arr.Length != 0)
     Array.Resize(ref arr, arr.Length - 10);
 }
 
-FileHelper.SaveResults(results);
+Helper.SaveResults(results);
