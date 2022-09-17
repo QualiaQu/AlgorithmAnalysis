@@ -24,7 +24,7 @@ public static class Helper
         }
         return timeList;
     }
-    static void PrintArray(int[] arr)
+    public static void PrintArray(int[] arr)
     {
         foreach (var i in arr)
         {
