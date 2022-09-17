@@ -11,7 +11,6 @@ for (int i = 0; i < arr.Length; i++)
 string results = "Объём данных;Время (миллисекунды)\n";
 while (arr.Length != 0)
 {
-    
     List<double> timeList = new List<double>();
     for (int k = 1; k <= 10; k++)
     {
@@ -31,7 +30,7 @@ while (arr.Length != 0)
         Console.WriteLine(i);
     }
  
-    var clearedList = Helper.TimeListSorting(timeList);
+    var clearedList = Helper.TimeListCleaning(timeList);
  
     int count = 0;
     foreach (var i in clearedList)

@@ -12,7 +12,7 @@ public static class Helper
         Console.WriteLine("Результаты успешно сохранены!");
     }
 
-    public static List<double> TimeListSorting(List<double> timeList)
+    public static List<double> TimeListCleaning(List<double> timeList)
     {
         var min = timeList.Min();
         for (var i = 0; i < timeList.Count; i++)
@@ -23,5 +23,14 @@ public static class Helper
             }
         }
         return timeList;
+    }
+    static void PrintArray(int[] arr)
+    {
+        foreach (var i in arr)
+        {
+            Console.Write(i + " ");
+        }
+
+        Console.WriteLine();
     }
 }
