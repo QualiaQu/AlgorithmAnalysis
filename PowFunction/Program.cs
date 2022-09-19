@@ -1,30 +1,35 @@
-﻿using System.Xml;
-using Microsoft.VisualBasic;
+﻿using System.Diagnostics;
+using HelperLibrary;
 
-namespace Tests;
-
-static class Program
+Stopwatch stopwatch = new Stopwatch();
+Random rand = new Random();
+int[] arr = new int[2000];
+for (int i = 0; i < arr.Length; i++)
 {
-    static void Main()
+    arr[i] = rand.Next(1, 100);
+}
+string results = "Объём данных;Время (миллисекунды)\n";
+while (arr.Length != 0)
+{
+    List<double> timeList = new List<double>();
+    for (int k = 1; k <= 20; k++)
     {
-        // var results = Pow(10, 10);
-        // Console.WriteLine("Pow: " + results + "\n");
-        //
-        // results = RecPow(10, 10);
-        // Console.WriteLine("RecPow: " + results + "\n");
-        //
-        // results = QuickPow(10, 10);
-        // Console.WriteLine("QuickPow: " + results + "\n");
-        //
-        // results = ClassicQuickPow(10, 10);
-        // Console.WriteLine("ClassicQuickPow: " + results + "\n");
-        double[] arr = {1, 2, 3, 4, 5, 100};
-
-        Console.WriteLine(Polynamial(arr));
-        Console.WriteLine(Gorner(arr));
+        double mul = 1;
+        stopwatch.Restart();
+        
+        timeList.Add(stopwatch.Elapsed.TotalMilliseconds * 1000);
+        stopwatch.Stop();
     }
+    Array.Resize(ref arr, arr.Length - 100);
+    
+    Helper.TimeListCleaning(timeList);
+    var averageTime = timeList.ToArray().Sum() / Helper.FindCount(timeList);
+    results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
+    timeList.Clear();
+}
+Helper.SaveResults(results);
 
-    static (int, int) Pow(int x, int n)
+static (int, int) Pow(int x, int n)
     {
         (int result, int countSteps) results = (0, 0);
 
@@ -148,25 +153,3 @@ static class Program
         
         return results;
     }
-
-    static double Polynamial (double[] array)
-    {
-        double x = 1.5;
-        double result = 0;
-
-        for (int k = 1; k < array.Length + 1; k++)
-        {
-            result += array[k - 1] * Math.Pow(x, k - 1);
-        }
-
-        return result;
-    }
-
-    static double Gorner(double[] a, int i = 0)
-    {
-        double x = 1.5;
-        if (i >= a.Length)
-            return 0;
-        return a[i] + x * Gorner(a, i + 1);
-    }
-}

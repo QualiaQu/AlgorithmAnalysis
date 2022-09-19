@@ -21,37 +21,14 @@ while (arr.Length != 0)
         timeList.Add(stopwatch.Elapsed.TotalMilliseconds * 1000);
         stopwatch.Stop();
     }
-    
-    Console.WriteLine("------------------------------------------\n");
-    Console.WriteLine($"объём данных{arr.Length}");
-    
-    foreach (var i in timeList)
-    {
-        Console.WriteLine(i);
-    }
- 
-    var clearedList = Helper.TimeListCleaning(timeList);
- 
-    int count = 0;
-    foreach (var i in clearedList)
-    {
-        if (i != 0)
-        {
-            count++;
-        }
-    }
-    var averageTime = timeList.ToArray().Sum();
-    averageTime /= count;
-    results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
     Array.Resize(ref arr, arr.Length - 20);
-    timeList.Clear();
-    Console.WriteLine("------------------------------------------\n");
-    Console.WriteLine($"объём данных{arr.Length}");
-    foreach (var i in timeList)
-    {
-        Console.WriteLine(i);
-    }
     
+    Helper.TimeListCleaning(timeList);
+
+    var averageTime = timeList.ToArray().Sum() / Helper.FindCount(timeList);
+    timeList.Clear();
+    
+    results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
 }
 Helper.SaveResults(results);
 static void BubbleSort(int[] anArray)
