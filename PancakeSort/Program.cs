@@ -12,39 +12,54 @@ string results = "Объём данных;Время (миллисекунды)\
 while (arr.Length != 0)
 {
     List<double> timeList = new List<double>();
-    for (int k = 1; k <= 10; k++)
+    for (int k = 1; k <= 50; k++)
     {
         int[] copy = new int[arr.Length];
         arr.CopyTo(copy, 0);
         stopwatch.Restart();
-        BubbleSort(copy);
+        PancakeSort(copy);
         timeList.Add(stopwatch.Elapsed.TotalMilliseconds * 1000);
         stopwatch.Stop();
     }
     Helper.TimeListCleaning(timeList);
 
     var averageTime = timeList.ToArray().Sum() / Helper.FindCount(timeList);
+    results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
     timeList.Clear();
     
-    results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
     Array.Resize(ref arr, arr.Length - 20);
 }
+
 Helper.SaveResults(results);
-static void BubbleSort(int[] anArray)
+
+static void Flip(int[] arr, int i)
 {
-    for (int i = 0; i < anArray.Length; i++)
+    int start = 0;
+    while (start < i)
     {
-        for (int j = 0; j < anArray.Length - 1 - i; j++)
+        (arr[start], arr[i]) = (arr[i], arr[start]);
+        start++;
+        i--;
+    }
+}
+static int FindMax(int[] arr, int n)
+{
+    int mi, i;
+    for (mi = 0, i = 0; i < n; ++i)
+        if (arr[i] > arr[mi])
+            mi = i;
+    return mi;
+}
+static void PancakeSort(int[] arr)
+{
+    for (int currSize = arr.Length; currSize > 1; --currSize)
+    {
+        int mi = FindMax(arr, currSize);
+        if (mi != currSize - 1)
         {
-            if (anArray[j] > anArray[j + 1])
-            {
-                Swap(ref anArray[j], ref anArray[j + 1]);
-            }
+            Flip(arr, mi);
+            Flip(arr, currSize - 1);
         }
     }
 }
 
-static void Swap(ref int aFirstArg, ref int aSecondArg)
-{
-    (aFirstArg, aSecondArg) = (aSecondArg, aFirstArg); 
-}

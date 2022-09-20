@@ -12,7 +12,7 @@ string results = "Input data;Time (milliseconds)\n";
 while (arr.Length != 0)
 {
     List<double> timeList = new List<double>();
-    for (int k = 1; k <= 10; k++)
+    for (int k = 1; k <= 50; k++)
     {
         double sum = 0;
         stopwatch.Restart();
@@ -23,12 +23,12 @@ while (arr.Length != 0)
         timeList.Add(stopwatch.Elapsed.TotalMilliseconds * 1000);
         stopwatch.Stop();
     }
-    Array.Resize(ref arr, arr.Length - 100);
-    
     Helper.TimeListCleaning(timeList);
+    
     var averageTime = timeList.ToArray().Sum() / Helper.FindCount(timeList);
     results += $"{arr.Length};{Math.Round(averageTime, 3)}\n";
-   
     timeList.Clear();
+    
+    Array.Resize(ref arr, arr.Length - 100);
 }
 Helper.SaveResults(results);

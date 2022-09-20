@@ -22,8 +22,6 @@ foreach (var exponent in degrees)
     results += $"{exponent};{stepsPow};{stepsRecPow};{stepsQuickPow};{stepsClassicQuickPow}\n";
 }
 
-
-
 Helper.SaveResults(results);
 
 static int Pow(int x, int n)

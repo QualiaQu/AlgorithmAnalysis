@@ -13,13 +13,14 @@ string results = "Input data;Time (milliseconds)\n";
 while (arr.Length != 0)
 {
     double averageTime = 0;
-    for (int k = 1; k <= 5; k++)
+    for (int k = 1; k <= 20; k++)
     {
         stopwatch.Restart();
         int element = arr[0];
         stopwatch.Stop();
         averageTime += stopwatch.Elapsed.TotalMilliseconds;
     }
+    
     averageTime /= 5;
     results += $"{arr.Length};{(Math.Round(averageTime, 6)) * 1000}\n";
     Array.Resize(ref arr, arr.Length - 10);
