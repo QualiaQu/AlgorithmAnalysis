@@ -2,11 +2,11 @@
 
 
 Random rnd = new Random();
-//int basis = rnd.Next(0, 10);
-int basis = 2;
 
-int[] degrees = new int[50];
-for (int i = 0; i <= 49; i++)
+
+
+int[] degrees = new int[100];
+for (int i = 0; i <= 99; i++)
 {
     degrees[i] = i + 1;
 }
@@ -15,10 +15,10 @@ string results = "Степень;Кол-во шагов - Pow;Кол-во шаг
 
 foreach (var exponent in degrees)
 {
-    var stepsPow = Pow(basis, exponent);
-    var stepsRecPow = RecPow(basis, exponent).Item2;
-    var stepsQuickPow = QuickPow(basis, exponent);
-    var stepsClassicQuickPow = ClassicQuickPow(basis, exponent);
+    var stepsPow = Pow(2, exponent);
+    var stepsRecPow = RecPow(2, exponent).Item2;
+    var stepsQuickPow = QuickPow(2, exponent);
+    var stepsClassicQuickPow = ClassicQuickPow(2, exponent);
     results += $"{exponent};{stepsPow};{stepsRecPow};{stepsQuickPow};{stepsClassicQuickPow}\n";
 }
 

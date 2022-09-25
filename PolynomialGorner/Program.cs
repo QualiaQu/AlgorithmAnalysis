@@ -4,7 +4,7 @@ using HelperLibrary;
 Stopwatch stopwatch = new Stopwatch();
 Random rand = new Random();
 
-int[] arr = new int[10000];
+int[] arr = new int[13000];
 for (int i = 0; i < arr.Length; i++)
 {
     arr[i] = rand.Next(1, 50);
@@ -18,7 +18,7 @@ while (arr.Length != 0)
 {
     List<double> timeListDirect = new List<double>();
     List<double> timeListGorn = new List<double>();
-    for (int k = 1; k <= 100; k++) 
+    for (int k = 1; k <= 11; k++) 
     {
         int[] copyDirect = new int[arr.Length];
         int[] copyGorn = new int[arr.Length];
@@ -39,12 +39,12 @@ while (arr.Length != 0)
         checkResultsGor += $"{arr.Length};{Math.Round(stopwatch.Elapsed.TotalMilliseconds * 1000, 3)}\n";
     }
 
-    Helper.TimeListCleaning(timeListDirect);
-    var averageTimeDirect = timeListDirect.ToArray().Sum() / Helper.FindCount(timeListDirect);
+    timeListDirect.Remove(timeListDirect.Max());
+    var averageTimeDirect = timeListDirect.ToArray().Sum() / 10;
     timeListDirect.Clear();
     
-    Helper.TimeListCleaning(timeListGorn);
-    var averageTimeGorn = timeListGorn.ToArray().Sum() / Helper.FindCount(timeListGorn);
+    timeListGorn.Remove(timeListGorn.Max());
+    var averageTimeGorn = timeListGorn.ToArray().Sum() / 10;
     timeListGorn.Clear();
     
     results += $"{arr.Length};{Math.Round(averageTimeDirect, 3)};{Math.Round(averageTimeGorn, 3)}\n";

@@ -3,7 +3,7 @@ using HelperLibrary;
 
 Stopwatch stopwatch = new Stopwatch();
 Random rand = new Random();
-int[] arr = new int[100000];
+int[] arr = new int[1000000];
 for (int i = 0; i < arr.Length; i++)
 {
     arr[i] = rand.Next(1, 100);
@@ -13,7 +13,7 @@ string results = "Input data;Time (milliseconds)\n";
 while (arr.Length != 0)
 {
     double averageTime = 0;
-    for (int k = 1; k <= 20; k++)
+    for (int k = 1; k <= 5; k++)
     {
         stopwatch.Restart();
         int element = arr[0];
@@ -23,7 +23,7 @@ while (arr.Length != 0)
     
     averageTime /= 5;
     results += $"{arr.Length};{(Math.Round(averageTime, 6)) * 1000}\n";
-    Array.Resize(ref arr, arr.Length - 10);
+    Array.Resize(ref arr, arr.Length - 100);
 }
 
 Helper.SaveResults(results);
